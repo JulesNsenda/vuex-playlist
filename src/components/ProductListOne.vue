@@ -8,7 +8,7 @@
       </li>
     </ul>
 
-    <button v-on:click="reducePrice">Reduce Price</button>
+    <button v-on:click="reducePrice(4)">Reduce Price</button>
   </div>
 </template>
 
@@ -23,8 +23,8 @@ export default {
     }
   },
   methods: {
-    reducePrice() {
-      this.$store.dispatch('reducePrice')
+    reducePrice(amount) {
+      this.$store.dispatch('reducePrice', amount)
     }
   }
 }
