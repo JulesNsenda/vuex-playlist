@@ -1,0 +1,2 @@
+# vuex-playlist
+Learning vuex
