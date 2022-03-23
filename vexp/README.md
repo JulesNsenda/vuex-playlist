@@ -1,4 +1,4 @@
-# vuex-playlist
+# vexp
 
 > A Vue.js project
 
