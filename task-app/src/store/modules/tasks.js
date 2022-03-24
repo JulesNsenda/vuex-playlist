@@ -37,13 +37,17 @@ const actions = {
         commit('setTasks', tasks);
     },
     addTask({commit}, tasks) {
-        commit('newTask', tasks)
+        commit('newTask', tasks);
+    }, 
+    removeTask({commit}, task){
+        commit('delTask', task);
     }
 };
 
 const mutations = {
     setTasks: (state, tasks) => state.tasks = tasks,
-    newTask: (state, task) => state.tasks.push(task)
+    newTask: (state, task) => state.tasks.push(task), 
+    delTask: (state, task) => state.tasks = state.tasks.filter(t => t.id !== task.id)
 };
 
 export default {
