@@ -1,27 +1,32 @@
 <template>
-  <div class="task-item" v-bind:class="{'is-complete':task.completed}">
-    <input type="checkbox" v-on:change="markComplete">
-    {{ task.title }}
-    <button @click="deleteTask">Remove task</button>
+  <div class="task-item" v-bind:class="{ 'is-complete': task.completed }">
+      <input type="checkbox" v-on:change="markComplete" />
+      {{ task.title }}
+      <button @click="deleteTask">Remove task</button>
   </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'; 
+import { mapActions } from "vuex";
 
 export default {
   name: "Task",
   props: ["task"],
   methods: {
-    ...mapActions(['removeTask']),
+    ...mapActions(["removeTask", "updateTask"]),
     markComplete() {
-      this.task.completed = !this.task.completed;
-    }, 
-    deleteTask(){
+      const updatedTask = {
+        id: this.task.id,
+        name: this.task.name,
+        completed: !this.task.completed,
+      };
+      this.updateTask(updatedTask);
+    },
+    deleteTask() {
       this.removeTask(this.task);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>

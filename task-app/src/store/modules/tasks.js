@@ -33,20 +33,29 @@ const getters = {
 };
 
 const actions = {
-    fetchTask({commit}, tasks) {
+    fetchTask({ commit }, tasks) {
         commit('setTasks', tasks);
     },
-    addTask({commit}, tasks) {
+    addTask({ commit }, tasks) {
         commit('newTask', tasks);
-    }, 
-    removeTask({commit}, task){
+    },
+    updateTask({ commit }, task) {
+        commit('updTask', task);
+    },
+    removeTask({ commit }, task) {
         commit('delTask', task);
     }
 };
 
 const mutations = {
     setTasks: (state, tasks) => state.tasks = tasks,
-    newTask: (state, task) => state.tasks.push(task), 
+    newTask: (state, task) => state.tasks.push(task),
+    updTask: (state, updatedTask) => {
+        const index = state.tasks.findIndex(t => t.id === updatedTask.id);
+        if (index !== -1) {
+            state.tasks.splice(index, 1, updatedTask);
+        }
+    },
     delTask: (state, task) => state.tasks = state.tasks.filter(t => t.id !== task.id)
 };
 
