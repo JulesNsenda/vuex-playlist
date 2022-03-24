@@ -20,7 +20,7 @@ export default {
     addTask(e) {
       e.preventDefault();
       const task = {
-        id: uuidv4,
+        id: uuidv4(),
         title: this.title,
         completed: false
       };

@@ -3,14 +3,12 @@
     <Header/>
     <AddTask v-on:add-task="addTask"/>
     <TaskManager v-bind:tasks="tasks" v-on:del-task="deleteTask"/>
-    <Task/>
   </div>
 </template>
 
 <script>
 
 import TaskManager from "@/components/TaskManager";
-import Task from "@/components/Task";
 import Header from "@/components/layout/Header";
 import AddTask from "@/components/AddTask";
 
@@ -19,7 +17,6 @@ export default {
   components: {
     AddTask,
     Header,
-    Task,
     TaskManager
   },
   data() {
