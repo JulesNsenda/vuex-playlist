@@ -15,6 +15,17 @@ const store = new Vuex.Store({
     //Have all computed properties here
     availableProducts(state, getters) {
       return state.products.filter(product => product.inventory > 0)
+    },
+
+    cartProducts(state) {
+      return state.cart.map(cartItem => {
+        const product = state.products.find(product => product.id === cartItem.id)
+        return{
+          title: product.title,
+          price: product.price,
+          quantity: cartItem.quantity
+        }
+      })
     }
   },
 
