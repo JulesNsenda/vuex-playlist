@@ -20,12 +20,16 @@ const store = new Vuex.Store({
     cartProducts(state) {
       return state.cart.map(cartItem => {
         const product = state.products.find(product => product.id === cartItem.id)
-        return{
+        return {
           title: product.title,
           price: product.price,
           quantity: cartItem.quantity
         }
       })
+    },
+
+    cartTotal(state, getters) {
+      return getters.cartProducts.reduce((total, product) => total + product.price * product.quantity, 0)
     }
   },
 
