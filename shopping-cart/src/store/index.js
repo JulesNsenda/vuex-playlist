@@ -11,8 +11,8 @@ const store = new Vuex.Store({
 
   getters: {
     //Have all computed properties here
-    productCount() {
-
+    availableProducts(state, getters) {
+      return state.products.filter(product => product.inventory > 0)
     }
   },
 

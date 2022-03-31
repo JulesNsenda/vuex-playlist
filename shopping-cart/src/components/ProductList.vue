@@ -15,7 +15,7 @@ export default {
   name: "ProductList",
   computed: {
     products() {
-      return store.state.products;
+      return store.getters.availableProducts;
     }
   },
 
