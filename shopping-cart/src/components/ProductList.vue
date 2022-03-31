@@ -2,7 +2,10 @@
   <div>
     <h1>Product List</h1>
     <ul>
-      <li v-for="product in products">{{ product.title }}</li>
+      <li v-for="product in products">
+        {{ product.title }} - {{ product.price }}
+        <button @click="addProductToCart(product)">Add to cart</button>
+      </li>
     </ul>
   </div>
 </template>
@@ -14,6 +17,12 @@ export default {
   computed: {
     products() {
       return this.$store.getters.availableProducts;
+    }
+  },
+
+  methods: {
+    addProductToCart(product) {
+      this.$store.dispatch('addProductToCart', product)
     }
   },
 
