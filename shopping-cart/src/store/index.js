@@ -19,12 +19,16 @@ const store = new Vuex.Store({
 
   actions: {
     //Here you keep all your methods
-    fetchProducts(context) {
+    fetchProducts({commit}) {
       //API Calls to fetch the product:: Make call
       // run the setProducts mutations
-      shop.getProducts(products => {
-        context.commit('setProducts', products)
+      return new Promise((resolve, reject) => {
+        shop.getProducts(products => {
+          commit('setProducts', products)
+          resolve()
+        })
       })
+
     },
   },
 
